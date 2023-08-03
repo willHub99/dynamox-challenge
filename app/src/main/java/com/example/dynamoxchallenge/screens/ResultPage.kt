@@ -31,7 +31,8 @@ import com.example.dynamoxchallenge.ui.theme.DynamoxChallengeTheme
 @Composable
 fun ResultPage(
     name: String,
-    qtdRightAnswer: Int
+    qtdRightAnswer: Int,
+    navigation: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -77,7 +78,9 @@ fun ResultPage(
             modifier = Modifier
                 .width(353.dp)
                 .height(48.dp),
-            action = {}
+            action = {
+                navigation()
+            }
         )
     }
 }
@@ -86,6 +89,6 @@ fun ResultPage(
 @Composable
 fun ResultPagePreview() {
     DynamoxChallengeTheme {
-        ResultPage("Uber", 3)
+        ResultPage("Uber", 3, navigation = {})
     }
 }

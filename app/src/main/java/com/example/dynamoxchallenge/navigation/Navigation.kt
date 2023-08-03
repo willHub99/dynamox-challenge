@@ -17,10 +17,10 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = Screen.Splash.screen) {
         composable(route = Screen.Splash.screen) {
-            SplashPage()
+            SplashPage { navController.navigate(Screen.Login.screen) }
         }
         composable(route = Screen.Login.screen) {
-            LoginPageScreen()
+            LoginPageScreen(navController)
         }
         composable(
             route = Screen.Question.screen + "/{name}",
@@ -31,7 +31,7 @@ fun Navigation() {
             )
         ) {entry ->
             entry.arguments?.getString("name")?.let {name ->
-                QuestionPage(name = name)
+                QuestionPage(name = name, navController)
             }
         }
         composable(
@@ -41,20 +41,20 @@ fun Navigation() {
                     type = NavType.StringType
                 },
                 navArgument(name = "qtdRightAnswer") {
-                    type = NavType.IntType
+                    type = NavType.StringType
                 }
             )
         ) {entry ->
             val nome = entry.arguments?.getString("name")
-            val qtdRightAnswer = entry.arguments?.getInt("qtdRightAnswer")
+            val qtdRightAnswer = entry.arguments?.getString("qtdRightAnswer")
             qtdRightAnswer?.let {qtd ->
                 nome?.let {name ->
                     ResultPage(
                         name = name,
-                        qtdRightAnswer = qtd
+                        qtdRightAnswer = qtd.toInt(),
+                        navigation = {navController.navigate(Screen.Login.screen)}
                     )
                 }
-
             }
         }
     }

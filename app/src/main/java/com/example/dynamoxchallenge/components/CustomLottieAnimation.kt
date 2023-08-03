@@ -35,7 +35,7 @@ fun CustomLottieAnimation(
 fun CustomLottieAnimationPreview() {
     DynamoxChallengeTheme {
         CustomLottieAnimation(
-            resourceId = R.raw.splash_screen,
+            resourceId = R.raw.load_more_question,
             modifier = Modifier.width(271.dp).height(152.dp)
         )
     }

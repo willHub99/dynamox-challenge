@@ -30,7 +30,7 @@ fun CustomButton(
             text = title,
             textAlign = TextAlign.Center,
             modifier = modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyLarge
         )
     }
 }

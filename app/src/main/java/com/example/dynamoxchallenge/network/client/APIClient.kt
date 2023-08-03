@@ -5,8 +5,6 @@ import com.example.dynamoxchallenge.network.model.RequestBody
 import com.example.dynamoxchallenge.network.model.Question
 import com.example.dynamoxchallenge.network.model.Result
 import com.example.dynamoxchallenge.network.service.QuizService
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

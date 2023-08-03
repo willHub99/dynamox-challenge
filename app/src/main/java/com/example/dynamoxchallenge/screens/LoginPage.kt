@@ -23,20 +23,27 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.dynamoxchallenge.R
 import com.example.dynamoxchallenge.components.CustomLottieAnimation
 import com.example.dynamoxchallenge.components.CustomOutlinedButton
 import com.example.dynamoxchallenge.components.Logo
 import com.example.dynamoxchallenge.constants.OUTLINED_BUTTON_PLAY_MESSAGE
 import com.example.dynamoxchallenge.constants.TEXT_FIELD_MESSAGE
+import com.example.dynamoxchallenge.navigation.Screen
 import com.example.dynamoxchallenge.ui.theme.ButtercupColor
+import com.example.dynamoxchallenge.ui.theme.DuneColor
 import com.example.dynamoxchallenge.ui.theme.DynamoxChallengeTheme
+import com.example.dynamoxchallenge.ui.theme.WestarColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginPageScreen() {
+fun LoginPageScreen(
+    navController: NavController
+) {
     var text by rememberSaveable { mutableStateOf("") }
 
     Column(
@@ -77,9 +84,11 @@ fun LoginPageScreen() {
                     modifier = Modifier.fillMaxWidth()
                 ) },
             singleLine = true,
-            colors = TextFieldDefaults.textFieldColors(
-                textColor = Color.White,
-                containerColor = ButtercupColor,
+            colors = TextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                focusedContainerColor = ButtercupColor,
+                unfocusedTextColor = DuneColor,
+                unfocusedContainerColor = WestarColor,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent
@@ -92,7 +101,11 @@ fun LoginPageScreen() {
             modifier = Modifier
                 .width(173.dp)
                 .height(48.dp),
-            action = {}
+            action = {
+                if (text.isNotEmpty()) {
+                    navController.navigate(Screen.Question.withArgs(text))
+                }
+            }
         )
     }
 }
@@ -101,6 +114,6 @@ fun LoginPageScreen() {
 @Composable
 fun LoginPageScreenPreview() {
     DynamoxChallengeTheme {
-        LoginPageScreen()
+        LoginPageScreen(navController = NavController(LocalContext.current))
     }
 }

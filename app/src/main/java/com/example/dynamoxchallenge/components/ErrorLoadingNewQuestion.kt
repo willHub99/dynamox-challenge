@@ -13,33 +13,45 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dynamoxchallenge.R
-import com.example.dynamoxchallenge.constants.GET_NEW_QUESTION_MESSAGE
-import com.example.dynamoxchallenge.ui.theme.DuneColor
+import com.example.dynamoxchallenge.constants.ERROR_MESSAGE
+import com.example.dynamoxchallenge.constants.TRY_AGAIN_MESSAGE
 import com.example.dynamoxchallenge.ui.theme.DynamoxChallengeTheme
+import com.example.dynamoxchallenge.ui.theme.ErrorColor
 
 @Composable
-fun LoadNewQuestion() {
+fun ErrorLoadingNewQuestion(
+    action: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = GET_NEW_QUESTION_MESSAGE,
+            text = ERROR_MESSAGE,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.bodyMedium,
-            color = DuneColor
+            color = ErrorColor
         )
         CustomLottieAnimation(
-            resourceId = R.raw.load_more_question,
+            resourceId = R.raw.error,
             modifier = Modifier.width(173.dp).height(130.dp)
+        )
+        CustomOutlinedButton(
+            title = TRY_AGAIN_MESSAGE,
+            modifier = Modifier
+                .width(353.dp)
+                .height(48.dp),
+            action = {action()}
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun LoadNewQuestionPreview() {
+fun ErrorLoadingNewQuestionPreview() {
     DynamoxChallengeTheme {
-        LoadNewQuestion()
+        ErrorLoadingNewQuestion(
+            action = {}
+        )
     }
 }

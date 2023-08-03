@@ -13,3 +13,6 @@ package com.example.dynamoxchallenge.constants
     const val WRONG_ANSWER_MESSAGE = "Resposta errada"
     const val TEXT_FIELD_MESSAGE = "Insira o seu nome/apelido"
     const val CONGRATULATIONS_MESSAGE = "Parabéns "
+    const val ALTERNATIVE_MESSAGE = "Alternativas"
+    const val TRY_AGAIN_MESSAGE = "Tentar novamente"
+    const val ERROR_MESSAGE = "Ooops"
