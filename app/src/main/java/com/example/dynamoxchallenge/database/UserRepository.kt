@@ -6,14 +6,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserRepository(
-    private val userDAO: UserDAO,
-    dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val userDAO: UserDAO
 ) {
-    private val coroutineScope = CoroutineScope(dispatcher)
-    fun addUser(user: UserDatabaseModel) {
-        coroutineScope.launch {
-            userDAO.addUser(user)
-        }
+    suspend fun addUser(user: UserDatabaseModel) {
+        userDAO.addUser(user)
     }
 
     fun findUser(id: Int): UserDatabaseModel {
@@ -24,15 +20,11 @@ class UserRepository(
         return userDAO.getAllUsers()
     }
 
-    fun updateUser(user: UserDatabaseModel) {
-        coroutineScope.launch {
-            userDAO.updateUser(user)
-        }
+    suspend fun updateUser(user: UserDatabaseModel) {
+        userDAO.updateUser(user)
     }
 
-    fun deleteUser(user: UserDatabaseModel) {
-        coroutineScope.launch {
-            userDAO.deleteUser(user)
-        }
+    suspend fun deleteUser(user: UserDatabaseModel) {
+        userDAO.deleteUser(user)
     }
 }

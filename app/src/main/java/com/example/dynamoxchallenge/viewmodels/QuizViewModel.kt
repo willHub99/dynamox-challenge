@@ -1,6 +1,6 @@
 package com.example.dynamoxchallenge.viewmodels
 
-import android.util.Log
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dynamoxchallenge.data.AnswerCheckCallNetworkResponse
@@ -34,7 +34,10 @@ class QuizViewModel(
 
     fun getNewQuestion() = viewModelScope.launch(Dispatchers.IO) {
         _questionPage.update {
-            it.copy(isLoading = true)
+            it.copy(
+                isLoading = true,
+                error = ""
+            )
         }
         try {
             val response = repository.getNewQuestion()
@@ -52,7 +55,6 @@ class QuizViewModel(
                         isLastQuestion = (it.actualQuestion + 1) == 10
                     )
                 }
-                Log.d("NEWQUESTION", response.body().toString())
             }
         } catch (e: Exception) {
             _questionPage.update {
@@ -66,7 +68,10 @@ class QuizViewModel(
 
     fun checkAnswer(questionId: Int, answer: String) = viewModelScope.launch(Dispatchers.IO) {
         _answerState.update {
-            it.copy(isLoading = true)
+            it.copy(
+                isLoading = true,
+                error = ""
+            )
 
         }
         try {
@@ -89,7 +94,6 @@ class QuizViewModel(
                         }
                     }
                 }
-                Log.d("ANSWEEEEEERRRR", response.body().toString())
             }
         } catch (e: Exception) {
             _questionPage.update {

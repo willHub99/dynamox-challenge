@@ -7,14 +7,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 @Entity(tableName = "users")
-@Parcelize
 data class UserDatabaseModel(
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    @ColumnInfo(name = "id")
-    var id: Int,
+    @PrimaryKey
+    var id: String,
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "rightAnswerQuantity")
     var rightAnswerQuantity: Int
-): Parcelable
+)

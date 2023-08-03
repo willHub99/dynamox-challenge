@@ -1,5 +1,6 @@
 package com.example.dynamoxchallenge.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +36,7 @@ import com.example.dynamoxchallenge.constants.OUTLINED_BUTTON_PLAY_MESSAGE
 import com.example.dynamoxchallenge.constants.TEXT_FIELD_MESSAGE
 import com.example.dynamoxchallenge.navigation.Screen
 import com.example.dynamoxchallenge.ui.theme.ButtercupColor
+import com.example.dynamoxchallenge.ui.theme.CardColor
 import com.example.dynamoxchallenge.ui.theme.DuneColor
 import com.example.dynamoxchallenge.ui.theme.DynamoxChallengeTheme
 import com.example.dynamoxchallenge.ui.theme.WestarColor
@@ -87,13 +89,15 @@ fun LoginPageScreen(
             colors = TextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 focusedContainerColor = ButtercupColor,
-                unfocusedTextColor = DuneColor,
-                unfocusedContainerColor = WestarColor,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent
             ),
-            shape = RoundedCornerShape(10.dp)
+            shape = RoundedCornerShape(10.dp),
+            modifier = Modifier.background(
+                color = CardColor,
+                shape = RoundedCornerShape(10.dp)
+            )
         )
         Spacer(modifier = Modifier.height(36.dp))
         CustomOutlinedButton(

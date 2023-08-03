@@ -1,11 +1,12 @@
 package com.example.dynamoxchallenge.database
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-
+@Dao
 interface UserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addUser(user: UserDatabaseModel)

@@ -1,6 +1,5 @@
 package com.example.dynamoxchallenge.screens
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -121,6 +120,16 @@ fun QuestionPage(
                         }
                     }
                 }
+                if (answerState.error.isNotEmpty()) {
+                    ErrorLoadingNewQuestion{
+                        question.question?.let { question ->
+                            viewModel.checkAnswer(
+                                questionId = question.id.toInt(),
+                                answer = selectedQuestion
+                            )
+                        }
+                    }
+                }
             }
         }
     ) {   Column(
@@ -176,7 +185,6 @@ fun QuestionPage(
                                     bottom = 16.dp
                                 )
                                 .clickable {
-                                    Log.d("SELECTEDVALUUUUEEE", selectedQuestion)
                                     if (selectedQuestion.isNotEmpty()) {
                                         viewModel.checkAnswer(
                                             questionId = question.id.toInt(),

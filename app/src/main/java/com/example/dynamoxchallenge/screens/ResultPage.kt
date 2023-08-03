@@ -13,10 +13,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dynamoxchallenge.R
 import com.example.dynamoxchallenge.components.CardResult
 import com.example.dynamoxchallenge.components.CustomLottieAnimation
@@ -24,9 +28,15 @@ import com.example.dynamoxchallenge.components.CustomOutlinedButton
 import com.example.dynamoxchallenge.components.Logo
 import com.example.dynamoxchallenge.constants.CONGRATULATIONS_MESSAGE
 import com.example.dynamoxchallenge.constants.OUTLINED_BUTTON_PLAY_AGAIN_MESSAGE
+import com.example.dynamoxchallenge.database.UserDatabaseModel
+import com.example.dynamoxchallenge.database.UserRoomDatabase
 import com.example.dynamoxchallenge.ui.theme.ButtercupColor
 import com.example.dynamoxchallenge.ui.theme.DuneColor
 import com.example.dynamoxchallenge.ui.theme.DynamoxChallengeTheme
+import com.example.dynamoxchallenge.viewmodels.DatabaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.UUID
 
 @Composable
 fun ResultPage(
@@ -34,6 +44,11 @@ fun ResultPage(
     qtdRightAnswer: Int,
     navigation: () -> Unit
 ) {
+    val database: UserRoomDatabase = UserRoomDatabase.getInstance(LocalContext.current)
+    val viewModel: DatabaseViewModel = DatabaseViewModel(database)
+    LaunchedEffect(key1 = true) {
+        viewModel.saveUser(name = name, qtdRightAnswer = qtdRightAnswer)
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
