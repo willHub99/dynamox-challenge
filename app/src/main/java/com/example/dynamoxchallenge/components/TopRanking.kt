@@ -34,12 +34,12 @@ fun TopRanking(
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.Bottom
     ) {
         Column(
             modifier = Modifier.width(112.dp),
         ) {
-            Spacer(modifier = Modifier.height(50.dp))
             Text(
                 text = second.name,
                 color = CornHarvestColor,
@@ -120,7 +120,6 @@ fun TopRanking(
         Column(
             modifier = Modifier.width(112.dp)
         ) {
-            Spacer(modifier = Modifier.height(100.dp))
             Text(
                 text = third.name,
                 color = CornHarvestColor,
