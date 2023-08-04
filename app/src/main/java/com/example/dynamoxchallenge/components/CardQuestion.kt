@@ -30,7 +30,7 @@ fun CardQuestion(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.width(353.dp).height(137.dp),
+        modifier = modifier.width(353.dp).height(200.dp),
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
             containerColor = CardColor
@@ -42,10 +42,13 @@ fun CardQuestion(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                modifier = Modifier.padding(horizontal = 11.dp),
-                color = Color.White,
+                modifier = Modifier.padding(
+                    horizontal = 11.dp,
+                    vertical = 11.dp
+                ),
+                color = Color.Black,
                 text = question,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center
             )
             Text(
@@ -54,7 +57,7 @@ fun CardQuestion(
                     .padding(top = 20.dp, end = 8.dp),
                 color = DuneColor,
                 text = "$numberActualQuestion/10",
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.End
             )
         }

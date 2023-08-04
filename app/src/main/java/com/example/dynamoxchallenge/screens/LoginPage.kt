@@ -93,7 +93,7 @@ fun LoginPageScreen(
                 Text(
                     text = TEXT_FIELD_MESSAGE,
                     style = MaterialTheme.typography.bodySmall,
-                    color = Color.White,
+                    color = Color.Black,
                     modifier = Modifier.fillMaxWidth()
                 ) },
             singleLine = true,
@@ -109,6 +109,7 @@ fun LoginPageScreen(
                 color = CardColor,
                 shape = RoundedCornerShape(10.dp)
             )
+                .height(64.dp)
         )
         Spacer(modifier = Modifier.height(36.dp))
         Row(

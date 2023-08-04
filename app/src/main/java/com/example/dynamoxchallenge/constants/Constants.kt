@@ -19,3 +19,4 @@ package com.example.dynamoxchallenge.constants
     const val RANKINK_MESSAGE = "Ranking"
     const val BACK_MESSAGE = "Voltar"
     const val DEFAULT_RANKING_PAGE_MESSAGE = "Jogue mais de três vezes para ver o ranking"
+    const val CHECK_ANSWER_MESSAGE = "Verificar resposta"

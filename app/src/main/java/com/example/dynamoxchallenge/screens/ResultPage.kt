@@ -87,7 +87,7 @@ fun ResultPage(
         )
         Spacer(modifier = Modifier.height(36.dp))
         CardResult(numberActualQuestion = qtdRightAnswer)
-        Spacer(modifier = Modifier.height(66.dp))
+        Spacer(modifier = Modifier.height(36.dp))
         CustomOutlinedButton(
             title = OUTLINED_BUTTON_PLAY_AGAIN_MESSAGE,
             modifier = Modifier

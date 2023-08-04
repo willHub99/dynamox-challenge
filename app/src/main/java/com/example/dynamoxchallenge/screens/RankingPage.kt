@@ -55,39 +55,45 @@ fun RankingPage(
         modifier = Modifier
             .padding(horizontal = 10.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 36.dp)
-            ,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Logo(
-                modifier = Modifier
-                    .fillMaxWidth(0.3f)
-                    .clickable {
-                        navigation()
-                    },
-                style = MaterialTheme.typography.titleMedium
-            )
-            CustomLottieAnimation(
-                resourceId = R.raw.splash_screen,
-                modifier = Modifier
-                    .width(121.dp)
-                    .height(68.dp)
-            )
-        }
-        Spacer(modifier = Modifier.height(36.dp))
-        Text(
-            text = RANKINK_MESSAGE,
-            color = DuneColor,
-            style = MaterialTheme.typography.titleSmall
-        )
-        Spacer(modifier = Modifier.height(24.dp))
+
+
         usersState.users?.let {ranking ->
             if (ranking.size > 3) {
                 LazyColumn() {
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 36.dp)
+                            ,
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Logo(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.3f)
+                                    .clickable {
+                                        navigation()
+                                    },
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            CustomLottieAnimation(
+                                resourceId = R.raw.splash_screen,
+                                modifier = Modifier
+                                    .width(121.dp)
+                                    .height(68.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(36.dp))
+                    }
+                    item {
+                        Text(
+                            text = RANKINK_MESSAGE,
+                            color = DuneColor,
+                            style = MaterialTheme.typography.titleSmall
+                        )
+                        Spacer(modifier = Modifier.height(24.dp))
+                    }
                     item {
                         TopRanking(
                             first = ranking[0],
@@ -132,6 +138,7 @@ fun RankingPage(
                         ) {
                             navigation()
                         }
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
             } else {

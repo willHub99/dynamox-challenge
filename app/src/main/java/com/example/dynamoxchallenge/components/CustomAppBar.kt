@@ -39,12 +39,12 @@ fun CustomAppBar(
         Row {
             Text(
                 text = WELCOME_MESSAGE,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyLarge,
                 color = DuneColor
             )
             Text(
                 text = name,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyLarge,
                 color = ButtercupColor
             )
         }
