@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.dynamoxchallenge.constants.TABLE_NAME
 
 @Database(entities = [(UserDatabaseModel::class)], version = 1, exportSchema = false)
 abstract class UserRoomDatabase: RoomDatabase() {
@@ -20,7 +21,7 @@ abstract class UserRoomDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         UserRoomDatabase::class.java,
-                        "users"
+                        TABLE_NAME
                     ).fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance

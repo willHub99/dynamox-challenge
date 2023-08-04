@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.dynamoxchallenge.screens.LoginPageScreen
 import com.example.dynamoxchallenge.screens.QuestionPage
+import com.example.dynamoxchallenge.screens.RankingPage
 import com.example.dynamoxchallenge.screens.ResultPage
 import com.example.dynamoxchallenge.screens.SplashPage
 
@@ -21,6 +22,11 @@ fun Navigation() {
         }
         composable(route = Screen.Login.screen) {
             LoginPageScreen(navController)
+        }
+        composable(route = Screen.Ranking.screen) {
+            RankingPage(
+                navigation = {navController.navigate(Screen.Login.screen)}
+            )
         }
         composable(
             route = Screen.Question.screen + "/{name}",

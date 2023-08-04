@@ -5,6 +5,7 @@ sealed class Screen(val screen: String) {
     object Login: Screen("login_page")
     object Question: Screen("question_page")
     object Result: Screen("result_page")
+    object Ranking: Screen("ranking_page")
 
     fun withArgs(vararg args: String): String {
         return buildString {

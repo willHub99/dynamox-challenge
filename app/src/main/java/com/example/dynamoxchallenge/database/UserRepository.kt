@@ -1,15 +1,15 @@
 package com.example.dynamoxchallenge.database
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class UserRepository(
     private val userDAO: UserDAO
 ) {
     suspend fun addUser(user: UserDatabaseModel) {
         userDAO.addUser(user)
+    }
+
+    fun getUsersOrderByRightAnswerQuantity(): List<UserDatabaseModel> {
+        return userDAO.getUsersOrderByRightAnswerQuantity()
     }
 
     fun findUser(id: Int): UserDatabaseModel {

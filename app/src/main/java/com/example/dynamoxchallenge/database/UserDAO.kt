@@ -18,4 +18,6 @@ interface UserDAO {
     suspend fun updateUser(user: UserDatabaseModel)
     @Delete
     suspend fun deleteUser(user: UserDatabaseModel)
+    @Query("SELECT * FROM users ORDER BY rightAnswerQuantity DESC")
+    fun getUsersOrderByRightAnswerQuantity(): List<UserDatabaseModel>
 }
