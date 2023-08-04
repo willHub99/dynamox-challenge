@@ -3,7 +3,7 @@
 Responda perguntas de conhecimento geral e compare seus resultados com o de seus amigos.
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://github.com/willHub99/dynamox-challenge/blob/main/app/src/main/res/drawable/logo.png)
 
 
 ## Autores
